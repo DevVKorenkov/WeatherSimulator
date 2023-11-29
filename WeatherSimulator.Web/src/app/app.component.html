@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hello from Razor Slices!</title>
+</head>
+<body>
+  <select [(ngModel)]="cityId">
+    <option selected>Выберите город</option>
+    <option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
+  </select>
+  <button type="button" (click)="getWeather(false)">
+    Показать погоду
+  </button>
+  <button *ngIf="isDownloading" (click)="getWeather(true)">отмена</button>
+  <div *ngIf="weather != undefined">
+    <h3>Погода в {{weather!.city.name}}, дата {{ weather!.date | date }}</h3>
+    <h4>Температура: {{weather!.temperature.temperature}} по Цельсию</h4>
+    <h4>Ветер: {{weather!.wind.windDirection}}</h4>
+    <h5>Сила ветра: {{weather!.wind.power}} М/С</h5>
+  </div>
+  <h5 *ngIf="errorText != ''">{{errorText}}</h5>
+
+  <br>
+  <hr>
+  <br>
+
+  <button (click)="getWeatherHistory(false)">Показать историю погоды</button>
+    <div *ngFor="let weather of weatherHistory">
+        <h3>Погода в {{weather!.city.name}}, дата {{ weather!.date | date }}</h3>
+        <h4>Температура: {{weather!.temperature.temperature}} по Цельсию</h4>
+        <h4>Ветер: {{weather!.wind.windDirection}}</h4>
+        <h5>Сила ветра: {{weather!.wind.power}} М/С</h5>
+    </div>
+</body>
+</html>
