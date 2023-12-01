@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace WeatherSimulator.Data.Exceptions;
+namespace WeatherSimulator.Core.Exceptions;
 
 /// <summary>
 /// Исключение содержащее статус код "контент не найден"

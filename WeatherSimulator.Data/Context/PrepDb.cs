@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using WeatherSimulator.Data.Services.Abstractions;
+using WeatherSimulator.Core.Services;
 using WeatherSimulator.Models.Entities;
 
 namespace WeatherSimulator.Data.Context;

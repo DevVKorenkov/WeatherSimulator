@@ -1,6 +1,6 @@
 ﻿using WeatherSimulator.Models.Entities;
 
-namespace WeatherSimulator.Data.Services.Abstractions;
+namespace WeatherSimulator.Core.Services;
 
 public interface IWeatherService
 {

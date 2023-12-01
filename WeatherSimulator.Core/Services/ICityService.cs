@@ -1,7 +1,7 @@
 ﻿using WeatherSimulator.Models.Entities;
 using WheatherSimulator.Models.DTOs;
 
-namespace WeatherSimulator.Data.Services.Abstractions;
+namespace WeatherSimulator.Core.Services;
 
 /// <summary>
 /// Осуществляет обработку городов

@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using WeatherSimulator.Data.Services.Abstractions;
+using WeatherSimulator.Core.Services;
 using WeatherSimulator.Models.Entities;
 using WeatherSimulator.Models.Models;
 using WheatherSimulator.Models.DTOs;

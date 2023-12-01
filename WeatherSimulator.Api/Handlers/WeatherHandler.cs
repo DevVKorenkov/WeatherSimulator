@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Options;
 using System.Net;
-using WeatherSimulator.Data.Services.Abstractions;
+using WeatherSimulator.Core.Services;
 using WeatherSimulator.Models.DTOs;
 using WeatherSimulator.Models.Models;
 

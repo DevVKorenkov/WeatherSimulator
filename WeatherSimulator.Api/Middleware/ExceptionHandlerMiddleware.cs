@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using WeatherSimulator.Data.Exceptions;
+using WeatherSimulator.Core.Exceptions;
 
 namespace WeatherSimulator.Api.Middleware;
 

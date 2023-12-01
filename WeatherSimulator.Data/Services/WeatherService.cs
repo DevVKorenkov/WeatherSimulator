@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WeatherSimulator.Core.Services;
 using WeatherSimulator.Data.Context;
-using WeatherSimulator.Data.Services.Abstractions;
 using WeatherSimulator.Models.Entities;
 using WeatherSimulator.Models.Models;
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
-using WeatherSimulator.Data.Services.Abstractions;
+using WeatherSimulator.Core.Services;
 using WeatherSimulator.Models.Models;
 
 namespace WeatherSimulator.Api;

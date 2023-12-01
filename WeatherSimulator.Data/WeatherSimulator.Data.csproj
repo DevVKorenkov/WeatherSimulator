@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WeatherSimulator.Core\WeatherSimulator.Core.csproj" />
     <ProjectReference Include="..\WeatherSimulator.Models\WeatherSimulator.Models.csproj" />
   </ItemGroup>
 

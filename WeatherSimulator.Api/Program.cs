@@ -2,9 +2,9 @@
 using WeatherSimulator.Api;
 using WeatherSimulator.Api.Handlers;
 using WeatherSimulator.Api.Middleware;
+using WeatherSimulator.Core.Services;
 using WeatherSimulator.Data.Context;
 using WeatherSimulator.Data.Services;
-using WeatherSimulator.Data.Services.Abstractions;
 using WeatherSimulator.Models.Configurations;
 using WeatherSimulator.Models.Models;
 

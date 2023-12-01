@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using WeatherSimulator.Core.Services;
 using WeatherSimulator.Data.Context;
-using WeatherSimulator.Data.Services.Abstractions;
 using WeatherSimulator.Models.Entities;
 using WheatherSimulator.Models.DTOs;
 
