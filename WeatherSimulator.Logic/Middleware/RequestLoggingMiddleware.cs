@@ -1,6 +1,8 @@
-﻿using System.Text;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using System.Text;
 
-namespace WeatherSimulator.Api.Middleware;
+namespace WeatherSimulator.Logic.Middleware;
 
 /// <summary>
 /// Логирует все поступающие запросы. Логируются адрес, метод, хедеры и тело запроса.
@@ -43,7 +45,7 @@ public class RequestLoggingMiddleware(RequestDelegate next, ILogger<RequestLoggi
     {
         stringBuilder.AppendLine("Body:\n");
 
-        request.EnableBuffering();
+        //request.EnableBuffering();
 
         var bodyStreamReader = new StreamReader(request.Body);
         bodyStreamReader.BaseStream.Seek(0, SeekOrigin.Begin);

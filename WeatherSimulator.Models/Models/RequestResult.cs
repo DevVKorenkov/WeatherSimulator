@@ -1,6 +1,7 @@
 ﻿using System.Net;
 
 namespace WeatherSimulator.Models.Models;
+// TODO: remove this class
 
 /// <summary>
 /// Результат обработки запросов.
@@ -11,5 +12,5 @@ namespace WeatherSimulator.Models.Models;
 public class RequestResult
 {
     public HttpStatusCode HttpStatusCode { get; set; }
-    public string Message { get; set; } = null!;
+    public string? Message { get; set; }
 }

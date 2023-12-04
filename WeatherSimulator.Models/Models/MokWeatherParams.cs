@@ -9,6 +9,6 @@ public class MokWeatherParams
     public int HighestTemperature { get; set; }
     public int MiddleTemperature {get; set; }
     public int HighestWindPower {get; set; }
-    public LowestDate LowestDate { get; set; } = null!;
-    public Time Time { get; set; } = null!;
+    public required LowestDate LowestDate { get; set; }
+    public required Time Time { get; set; }
 }

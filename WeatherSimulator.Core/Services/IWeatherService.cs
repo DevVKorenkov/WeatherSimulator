@@ -9,17 +9,17 @@ public interface IWeatherService
     /// </summary>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
-    Task RandomGenerateAsync();
+    Task RandomGenerateAsync(CancellationToken cancellationToken);
     /// <summary>
     /// Получает последнюю сгенерированную погоду по ID города. Возвращает null если город не найден. 
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task<Weather> GetWeatherByCityIdAsync(int id);
+    Task<Weather> GetWeatherByCityIdAsync(int id, CancellationToken cancellationToken);
     /// <summary>
     /// Получает историю погоды сгенерированную для города по ID города. Возвращает null если город не найден.
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task<IEnumerable<Weather>> GetWeatherHistoryByCityIdAsync(int id);
+    Task<IEnumerable<Weather>> GetWeatherHistoryByCityIdAsync(int id, CancellationToken cancellationToken);
 }

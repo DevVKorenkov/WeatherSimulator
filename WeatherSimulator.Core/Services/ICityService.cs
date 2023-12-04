@@ -13,10 +13,10 @@ public interface ICityService
     /// </summary>
     /// <param name="city"></param>
     /// <returns></returns>
-    Task AddCityAsync(City city);
+    Task AddCityAsync(City city, CancellationToken cancellationToken);
     /// <summary>
     /// Получает все города из БД
     /// </summary>
     /// <returns></returns>
-    Task<IEnumerable<CityDTO>> GetCities();
+    Task<IEnumerable<CityDTO>> GetCitiesAsync(CancellationToken cancellationToken);
 }

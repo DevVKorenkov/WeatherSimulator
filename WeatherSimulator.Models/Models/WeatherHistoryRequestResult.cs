@@ -7,5 +7,5 @@ namespace WeatherSimulator.Models.Models;
 /// </summary>
 public class WeatherHistoryRequestResult : RequestResult
 {
-    public ICollection<WeatherDTO> WeatherHistory { get; set; } = null!;
+    public ICollection<WeatherDTO> WeatherHistory { get; set; } = new HashSet<WeatherDTO>();
 }

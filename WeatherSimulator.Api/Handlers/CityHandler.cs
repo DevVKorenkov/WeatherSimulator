@@ -17,18 +17,24 @@ public class CityHandler
     /// <param name="cityService"></param>
     /// <param name="cityName"></param>
     /// <returns></returns>
-    public async Task<RequestResult> AddCity(
+    public static async Task<RequestResult> AddCity(
         ICityService cityService, 
-        string cityName)
+        string cityName,
+        CancellationToken cancellationToken)
     {
+        // TODO: replace all ThrowIfCancellationRequested() if it is needed
+        cancellationToken.ThrowIfCancellationRequested();
+
         var result = new RequestResult();
 
+        //TODO: remove try catch from here
         try
         {
             await cityService.AddCityAsync(new City
             {
                 Name = cityName,
-            });
+            },
+            cancellationToken);
 
             result.HttpStatusCode = HttpStatusCode.OK;
             result.Message = $"{cityName} City is Successfully added";
@@ -47,6 +53,12 @@ public class CityHandler
     /// </summary>
     /// <param name="cityService"></param>
     /// <returns></returns>
-    public async Task<IEnumerable<CityDTO>> GetCities(ICityService cityService) => await cityService.GetCities();
-    
+    public static async Task<IEnumerable<CityDTO>> GetCities(
+        ICityService cityService, 
+        CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+
+        return await cityService.GetCitiesAsync(cancellationToken);
+    }
 }

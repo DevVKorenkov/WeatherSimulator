@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WeatherSimulator.Api;
 using WeatherSimulator.Api.Handlers;
-using WeatherSimulator.Api.Middleware;
 using WeatherSimulator.Core.Services;
 using WeatherSimulator.Data.Context;
-using WeatherSimulator.Data.Services;
+using WeatherSimulator.Logic.Middleware;
+using WeatherSimulator.Logic.Services;
 using WeatherSimulator.Models.Configurations;
 using WeatherSimulator.Models.Models;
 
@@ -18,8 +18,11 @@ services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 services.AddCors();
 
-services.AddDbContext<WeatherDataContext>(opt 
+if(builder.Environment.IsDevelopment())
+{
+    services.AddDbContext<WeatherDataContext>(opt
     => opt.UseInMemoryDatabase(config.GetConnectionString("InMemory")));
+}
 
 services.Configure<Settings>(builder.Configuration.GetSection(nameof(Settings)));
 services.Configure<MokWeatherParams>(builder.Configuration.GetSection(nameof(MokWeatherParams)));
@@ -32,9 +35,7 @@ services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandlerMiddleware>();
-
-PrepDB.PrepPopulation(app);
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
@@ -50,11 +51,10 @@ app.UseCors(c =>
     c.AllowAnyOrigin();
 });
 
-app.UseMiddleware<RequestLoggingMiddleware>();
-
-app.MapGet("/GetByCityId/{id}",new WeatherHandler().GetWeatherHandler);
-app.MapGet("/GetWeatherHistoryByCityId/{id}", new WeatherHandler().GetWeatherHistoryHandler);
-app.MapPost("/AddCity/{cityName}", new CityHandler().AddCity);
-app.MapGet("/GetCities", new CityHandler().GetCities);
+// TODO: replace all ThrowIfCancellationRequested() if it is needed in handlers or controllers
+app.MapGet("/GetByCityId/{id}", WeatherHandler.GetWeatherHandler);
+app.MapGet("/GetWeatherHistoryByCityId/{id}", WeatherHandler.GetWeatherHistoryHandler);
+app.MapPost("/AddCity/{cityName}", CityHandler.AddCity);
+app.MapGet("/GetCities", CityHandler.GetCities);
 
 app.Run();

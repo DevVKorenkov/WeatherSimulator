@@ -24,12 +24,13 @@ public class WeatherHandler
     /// <param name="mapper"></param>
     /// <param name="id"></param>
     /// <returns></returns>
-    public async Task<WeatherRequestResult> GetWeatherHandler(
+    public static async Task<WeatherRequestResult> GetWeatherHandler(
         HttpContext context,
         IOptions<Settings> settings,
         IWeatherService weatherService,
         IMapper mapper,
-        int id)
+        int id,
+        CancellationToken cancellationToken)
     {
         // Иммитация долгой обработки запроса.
         await Task.Delay(settings.Value.ServerResponseDelayMSec, context.RequestAborted);
@@ -42,7 +43,7 @@ public class WeatherHandler
             result.Message = ABORTED_MESSAGE;
         }
 
-        var weather = await weatherService.GetWeatherByCityIdAsync(id);
+        var weather = await weatherService.GetWeatherByCityIdAsync(id, cancellationToken);
 
         if (weather is null)
         {
@@ -67,12 +68,13 @@ public class WeatherHandler
     /// <param name="mapper"></param>
     /// <param name="id"></param>
     /// <returns></returns>
-    public async Task<WeatherHistoryRequestResult> GetWeatherHistoryHandler(
+    public static async Task<WeatherHistoryRequestResult> GetWeatherHistoryHandler(
         HttpContext context,
         IOptions<Settings> settings,
         IWeatherService weatherService, 
         IMapper mapper,
-        int id)
+        int id, 
+        CancellationToken cancellationToken)
     {
         await Task.Delay(settings.Value.ServerResponseDelayMSec, context.RequestAborted);
 
@@ -84,7 +86,7 @@ public class WeatherHandler
             result.Message = ABORTED_MESSAGE;
         }
 
-        var weathers = await weatherService.GetWeatherHistoryByCityIdAsync(id);
+        var weathers = await weatherService.GetWeatherHistoryByCityIdAsync(id, cancellationToken);
 
         if (weathers is null || !weathers.Any())
         {

@@ -6,7 +6,7 @@ using WeatherSimulator.Data.Context;
 using WeatherSimulator.Models.Entities;
 using WeatherSimulator.Models.Models;
 
-namespace WeatherSimulator.Data.Services;
+namespace WeatherSimulator.Logic.Services;
 
 /// <summary>
 /// Сервис логики обработки погоды.
@@ -34,7 +34,7 @@ public class WeatherService(
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public async Task<IEnumerable<Weather>> GetWeatherHistoryByCityIdAsync(int id)
+    public async Task<IEnumerable<Weather>> GetWeatherHistoryByCityIdAsync(int id, CancellationToken cancellationToken)
     {
         _logger.LogInformation($"Start to getting weather history for a city with ID - {id}.");
 
@@ -72,7 +72,7 @@ public class WeatherService(
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public async Task<Weather> GetWeatherByCityIdAsync(int id)
+    public async Task<Weather> GetWeatherByCityIdAsync(int id, CancellationToken cancellationToken)
     {
         _logger.LogInformation($"Start to getting weather for a city with ID - {id}");
 
@@ -105,7 +105,7 @@ public class WeatherService(
     /// </summary>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
-    public async Task RandomGenerateAsync()
+    public async Task RandomGenerateAsync(CancellationToken cancellationToken)
     {
         _logger.LogInformation($"Start generating the weather.");
 

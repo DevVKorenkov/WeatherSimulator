@@ -15,4 +15,26 @@ public class WeatherDataContext : DbContext
     {
         Database.EnsureCreated();
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<City>().HasData(
+            new City
+            {
+                Id = 1,
+                Name = "Санкт-Петербург",
+            },
+            new City
+            {
+                Id = 2,
+                Name = "Москва",
+            },
+            new City
+            {
+                Id = 3,
+                Name = "Казань",
+            });
+    }
 }
